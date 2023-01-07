@@ -1,15 +1,18 @@
-local ensure_packer = function()
-	local fn = vim.fn
-	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-		vim.cmd([[packadd packer.nvim]])
-		return true
-	end
-	return false
+local packer_bootstrap = false
+local packer_install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+
+if vim.fn.empty(vim.fn.glob(packer_install_path)) > 0 then
+	vim.fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", packer_install_path })
+	vim.cmd([[packadd packer.nvim]])
+
+	packer_bootstrap = true
 end
 
-local packer_bootstrap = ensure_packer()
+local formatter = require("user.packages.formatter")
+local lsp = require("user.packages.lsp")
+local theme = require("user.packages.theme")
+local tree = require("user.packages.tree")
+local treesitter = require("user.packages.treesitter")
 
 require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
@@ -29,13 +32,10 @@ require("packer").startup(function(use)
 	use("tpope/vim-sleuth")
 
 	-- Formatter
-	use(require("user.packages.formatter"))
-
-	-- Impatient
-	use("lewis6991/impatient.nvim")
+	use(formatter)
 
 	-- LSP
-	use(require("user.packages.lsp"))
+	use(lsp)
 
 	-- Git diff
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
@@ -44,14 +44,17 @@ require("packer").startup(function(use)
 	use({
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.0",
-		requires = { { "nvim-lua/plenary.nvim" } },
+		requires = "nvim-lua/plenary.nvim",
 	})
 
 	-- Theme
-	use(require("user.packages.theme"))
+	use(theme)
+
+	-- Tree
+	use(tree)
 
 	-- Treesitter
-	use(require("user.packages.treesitter"))
+	use(treesitter)
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

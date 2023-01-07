@@ -8,6 +8,7 @@ local function config()
 		"sumneko_lua",
 		"rust_analyzer",
 		"gopls",
+		"marksman",
 	})
 
 	lsp.configure("sumneko_lua", {

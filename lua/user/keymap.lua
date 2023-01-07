@@ -1,6 +1,5 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>e", ":Ex<CR>2j")
 vim.keymap.set("n", "<leader>q", vim.cmd.q)
 vim.keymap.set("n", "<leader>w", vim.cmd.w)
 
@@ -27,10 +26,18 @@ vim.keymap.set({ "n", "v" }, "<leader>G", ":DiffviewClose<CR>")
 vim.keymap.set({ "n", "v" }, "<leader>c", ":Commentary<CR>")
 
 -- Telescope
-local telescopeFound, telescope = pcall(require, "telescope.builtin")
+local telescope_ok, telescope = pcall(require, "telescope.builtin")
 
-if telescopeFound then
+if telescope_ok then
 	vim.keymap.set("n", "<leader>f", telescope.find_files, {})
 	vim.keymap.set("n", "<leader>F", telescope.live_grep, {})
 	vim.keymap.set("n", "<leader>b", telescope.buffers, {})
+end
+
+-- Tree
+local tree_ok = pcall(require, "nvim-tree")
+
+if tree_ok then
+	vim.keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>")
+	vim.keymap.set("n", "<leader>E", ":NvimTreeFocus<CR>")
 end

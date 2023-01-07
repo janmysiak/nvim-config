@@ -13,6 +13,9 @@ local function config()
 			javascript = {
 				require("formatter.filetypes.javascript").prettier,
 			},
+			go = {
+				require("formatter.filetypes.go").gofmt,
+			},
 			rust = function()
 				return {
 					exe = "rustfmt --edition 2021",
