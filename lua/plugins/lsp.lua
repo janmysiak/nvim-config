@@ -8,7 +8,7 @@ local M = {
     'hrsh7th/nvim-cmp',
     'L3MON4D3/LuaSnip',
     'hrsh7th/cmp-nvim-lsp',
-    'stevearc/conform.nvim',
+    -- 'stevearc/conform.nvim',
   },
   config = function()
     local lsp_zero = require('lsp-zero')
@@ -25,11 +25,13 @@ local M = {
     local default_lsps = {
       "cssls",
       "eslint",
+      "gopls",
+      "jsonls",
       "lua_ls",
       "pyright",
-      'svelte',
       "tailwindcss",
       "tsserver",
+      'svelte',
     }
 
     require('mason').setup({})
@@ -44,27 +46,27 @@ local M = {
 
     -- Conform
 
-    require("conform").setup({
-      formatters_by_ft = {
-        javascript = { "prettierd" },
-        javascriptreact = { "prettierd" },
-        typescript = { "prettierd" },
-        typescriptreact = { "prettierd" },
-        -- python = { "black" },
-      },
-      format_on_save = {
-        timeout_ms = 500,
-        -- async = true,
-        lsp_fallback = true,
-      },
-    })
+    -- require("conform").setup({
+    --   formatters_by_ft = {
+    --     javascript = { "prettierd" },
+    --     javascriptreact = { "prettierd" },
+    --     typescript = { "prettierd" },
+    --     typescriptreact = { "prettierd" },
+    --     -- python = { "black" },
+    --   },
+    --   format_on_save = {
+    --     timeout_ms = 500,
+    --     -- async = true,
+    --     lsp_fallback = true,
+    --   },
+    -- })
 
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      pattern = "*",
-      callback = function(args)
-        require("conform").format({ bufnr = args.buf })
-      end,
-    })
+    -- vim.api.nvim_create_autocmd("BufWritePre", {
+    --   pattern = "*",
+    --   callback = function(args)
+    --     require("conform").format({ bufnr = args.buf })
+    --   end,
+    -- })
 
     -- Completions
 

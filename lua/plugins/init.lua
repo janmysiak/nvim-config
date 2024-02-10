@@ -21,7 +21,7 @@ require("lazy").setup({
 	{ "tpope/vim-sleuth" },
 
 	-- Formatter
-	-- require("plugins/formatter"),
+	require("plugins/formatter"),
 
 	-- LSP
 	require("plugins/lsp"),
@@ -62,6 +62,3 @@ require("lazy").setup({
 	{ "tpope/vim-surround" }
 })
 
------------------------------------------------------------
--- Graveyard
------------------------------------------------------------

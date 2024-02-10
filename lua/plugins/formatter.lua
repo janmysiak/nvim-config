@@ -14,25 +14,31 @@ local M = {
 			logging = false,
 			filetype = {
 				svelte = {
-					require("formatter.filetypes.typescriptreact").prettier,
+					require("formatter.filetypes.typescriptreact").prettierd,
 				},
 				typescriptreact = {
-					require("formatter.filetypes.typescriptreact").prettier,
+					require("formatter.filetypes.typescriptreact").prettierd,
 				},
 				typescript = {
-					require("formatter.filetypes.typescriptreact").prettier,
+					require("formatter.filetypes.typescriptreact").prettierd,
 				},
 				javascript = {
-					require("formatter.filetypes.javascript").prettier,
+					require("formatter.filetypes.javascript").prettierd,
 				},
 				javascriptreact = {
-					require("formatter.filetypes.javascript").prettier,
+					require("formatter.filetypes.javascript").prettierd,
 				},
 				css = {
-					require("formatter.filetypes.javascript").prettier,
+					require("formatter.filetypes.javascript").prettierd,
 				},
 				json = {
-					require("formatter.filetypes.javascript").prettier,
+					require("formatter.filetypes.javascript").prettierd,
+				},
+				python = {
+					require("formatter.filetypes.python").black,
+				},
+				go = {
+					require("formatter.filetypes.go").gofumpt,
 				},
 			}
 		})
