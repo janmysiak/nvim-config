@@ -8,9 +8,6 @@ require("lazy").setup({
 	-- Commentary
 	{ "tpope/vim-commentary" },
 
-	-- Conform
-	-- require("plugins/conform"),
-
 	-- Copilot
 	{ "github/copilot.vim" },
 
@@ -59,6 +56,5 @@ require("lazy").setup({
 	require("plugins/treesitter"),
 
 	-- Surround
-	{ "tpope/vim-surround" }
+	{ "tpope/vim-surround" },
 })
-

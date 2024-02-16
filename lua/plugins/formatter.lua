@@ -10,7 +10,7 @@ local M = {
 			command = ":FormatWrite",
 		})
 
-		require('formatter').setup({
+		require("formatter").setup({
 			logging = false,
 			filetype = {
 				svelte = {
@@ -36,13 +36,25 @@ local M = {
 				},
 				python = {
 					require("formatter.filetypes.python").black,
+
+					function()
+						return {
+							exe = "black",
+							args = {
+								"-l 100",
+							},
+						}
+					end,
 				},
 				go = {
 					require("formatter.filetypes.go").gofumpt,
 				},
-			}
+				lua = {
+					require("formatter.filetypes.lua").stylua,
+				},
+			},
 		})
-	end
+	end,
 }
 
 return M

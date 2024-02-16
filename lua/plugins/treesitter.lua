@@ -1,7 +1,9 @@
 local M = {
-	'nvim-treesitter/nvim-treesitter',
+	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
 	opts = {
+		additional_vim_regex_highlighting = false,
+
 		ensure_installed = {
 			"bash",
 			"css",
@@ -16,14 +18,14 @@ local M = {
 			"typescript",
 		},
 
-		sync_install = true,
+		indent = { enable = true },
 
 		highlight = {
 			enable = true,
 			use_languagetree = true,
 		},
 
-		indent = { enable = true },
+		sync_install = true,
 	},
 	config = function(_, opts)
 		-- dofile(vim.g.base46_cache .. "syntax")
